@@ -1,7 +1,7 @@
 name: Permissions
 main: com.nijikokun.bukkit.Permissions.Permissions
-depend: [ PermissionsEx ]
+depend: [ bPermissions ]
 version: 2.7.7
-authors: [ t3hk0d3, TheYeti, Nijiko ]
+authors: [ xu_robert, TheYeti, Nijiko ]
 website: www.bukkit.org
-description: Compatibility layer between original Permissions and PermissionsEx
+description: Compatibility layer between original Permissions and bPermissions

@@ -6,9 +6,6 @@ import com.nijiko.permissions.PermissionHandler;
 import java.util.logging.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import ru.tehkode.permissions.compat.P2Backend;
-import ru.tehkode.permissions.PermissionBackend;
-import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 /**
  * Legacy Permissions Compatibility Layer
@@ -41,11 +38,9 @@ public class Permissions extends JavaPlugin {
     public Permissions() {
         super();
         
-        PermissionBackend.registerBackendAlias("p2compat", P2Backend.class);
-        
         Permissions.instance = getInstance();
         
-        Logger.getLogger("Minecraft").info("[PermissionsCompat] Compatibility Layer Initalized!");
+        Logger.getLogger("Minecraft").info("[Permissions2b] Compatibility Layer Initalized!");
     }
 
     public static Plugin getInstance() {
@@ -61,13 +56,13 @@ public class Permissions extends JavaPlugin {
         try {            
             Security = this.getHandler();
         } catch (RuntimeException e) {
-            Logger.getLogger("Minecraft").warning("[PermissionsCompat] PermissionsEx plugin not found. Some plugins may not work.");
+            Logger.getLogger("Minecraft").warning("[Permissions2b] PermissionsEx plugin not found. Some plugins may not work.");
         }
     }
 
     @Override
     public void onEnable() {
-        Logger.getLogger("Minecraft").info("[PermissionsCompat] Compatibility layer enabled.");
+        Logger.getLogger("Minecraft").info("[Permissions2b] Compatibility layer enabled.");
     }
 
     @Override
@@ -77,7 +72,7 @@ public class Permissions extends JavaPlugin {
 
     public PermissionHandler getHandler() {
         if (Security == null) {
-            Security = new ru.tehkode.permissions.compat.PermissionHandler(PermissionsEx.getPermissionManager());
+            Security = new net.teamio.bPermissionsCompat.HandlerBridge();
         }
 
         return Security;
